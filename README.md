@@ -4,6 +4,7 @@
 > Build your own applications on demand, break free from telemetry and bloatware, and unleash raw bare-metal performance on a Fedora-powered, pre-tuned GNOME experience.
 
 [![ANTILINUX Website](https://img.shields.io/badge/Website-ANTILINUX-00E599?style=for-the-badge&logo=vercel&logoColor=white)](https://antilux.vercel.app)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/introvert024/ANTILINUX&project-name=ANTILINUX)
 [![Base: Fedora 41/42](https://img.shields.io/badge/Base-Fedora_Linux-51A2DA?style=for-the-badge&logo=fedora&logoColor=white)](https://getfedora.org)
 [![Desktop: Curated GNOME](https://img.shields.io/badge/Desktop-Curated_GNOME-4A86CF?style=for-the-badge&logo=gnome&logoColor=white)](https://gnome.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
