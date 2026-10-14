@@ -105,17 +105,21 @@ Features of the web portal:
 
 ---
 
-## 🛠️ Local Website Development
+## 🛠️ Local Website Development (Next.js & Vercel)
 
 ```bash
 # Clone the repository
 git clone https://github.com/introvert024/ANTILINUX.git
 cd ANTILINUX
 
-# Preview with any static server or npx
-npx serve .
-# Or Python
-python -m http.server 3000
+# Install dependencies
+npm install
+
+# Start Next.js local development server
+npm run dev
+
+# Build for production (same as Vercel)
+npm run build
 ```
 
 ---

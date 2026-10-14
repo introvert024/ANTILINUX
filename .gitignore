@@ -30,3 +30,7 @@ release_bundle
 *.tar.gz
 *.zip
 
+
+.next
+next-env.d.ts
+

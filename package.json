@@ -1,20 +1,29 @@
 {
   "name": "antilux",
   "version": "1.0.0",
-  "description": "ANTILINUX: Ditch Windows. Build and run your own apps in the Age of AI on Fedora Linux.",
+  "private": true,
+  "description": "ANTILINUX: Ditch Windows. Build at the Speed of AI on Fedora Linux.",
   "scripts": {
-    "start": "npx serve .",
-    "build": "echo 'Static build ready'"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
-  "keywords": [
-    "linux",
-    "fedora",
-    "gnome",
-    "ai",
-    "ollama",
-    "anti-windows",
-    "open-source"
-  ],
-  "author": "Krish Verma",
-  "license": "MIT"
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "lucide-react": "^1.16.0",
+    "next": "^15.1.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.16",
+    "typescript": "^5.7.2"
+  }
 }
