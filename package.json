@@ -1,0 +1,20 @@
+{
+  "name": "antilux",
+  "version": "1.0.0",
+  "description": "ANTILINUX: Ditch Windows. Build and run your own apps in the Age of AI on Fedora Linux.",
+  "scripts": {
+    "start": "npx serve .",
+    "build": "echo 'Static build ready'"
+  },
+  "keywords": [
+    "linux",
+    "fedora",
+    "gnome",
+    "ai",
+    "ollama",
+    "anti-windows",
+    "open-source"
+  ],
+  "author": "Krish Verma",
+  "license": "MIT"
+}

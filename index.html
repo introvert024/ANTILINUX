@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ANTILINUX — Ditch Windows. Build at the Speed of AI.</title>
+  <meta name="description" content="Fedora-based, pre-set GNOME environment engineered for the AI builder era. Zero telemetry, zero bloatware, native AI runtimes.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            fedora: {
+              DEFAULT: '#3c6eb4',
+              light: '#51a2da',
+              dark: '#294172'
+            },
+            gnome: {
+              DEFAULT: '#4a86cf',
+              dark: '#1e1e2e',
+              darker: '#11111b',
+              surface: '#181825',
+              card: '#24273a'
+            },
+            accent: {
+              neon: '#00e599',
+              cyan: '#06b6d4',
+              purple: '#a855f7',
+              warning: '#f59e0b',
+              danger: '#f43f5e'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"Fira Code"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="style.css">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-gnome-darker text-slate-100 font-sans selection:bg-accent-neon selection:text-black overflow-x-hidden min-h-screen">
+
+  <!-- Background Glow Accents -->
+  <div class="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
+    <div class="absolute -top-40 -left-40 w-96 h-96 bg-fedora/20 rounded-full blur-[140px]"></div>
+    <div class="absolute top-1/3 -right-40 w-[30rem] h-[30rem] bg-accent-neon/15 rounded-full blur-[160px]"></div>
+    <div class="absolute bottom-10 left-1/4 w-[28rem] h-[28rem] bg-accent-purple/15 rounded-full blur-[150px]"></div>
+    <div class="cyber-grid absolute inset-0 opacity-[0.08]"></div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav class="sticky top-0 z-50 backdrop-blur-xl bg-gnome-darker/80 border-b border-white/10 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-fedora to-accent-neon p-[2px] shadow-lg shadow-fedora/25 group-hover:shadow-accent-neon/30 transition-all">
+          <div class="w-full h-full bg-gnome-darker rounded-[10px] flex items-center justify-center font-mono font-bold text-lg text-accent-neon">
+            ⏻
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-extrabold text-xl tracking-wider text-white flex items-center gap-1.5">
+            ANTI<span class="text-accent-neon">LINUX</span>
+            <span class="text-[10px] px-1.5 py-0.5 rounded-full bg-fedora/30 text-fedora-light border border-fedora/40 font-mono font-medium">FEDORA</span>
+          </span>
+          <span class="text-[11px] text-slate-400 font-mono tracking-tight">ai-native workstation</span>
+        </div>
+      </a>
+
+      <!-- Desktop Links -->
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <a href="#philosophy" class="hover:text-accent-neon transition-colors">Philosophy</a>
+        <a href="#features" class="hover:text-accent-neon transition-colors">OS Specs</a>
+        <a href="#terminal" class="hover:text-accent-neon transition-colors">Live Shell</a>
+        <a href="#comparison" class="hover:text-accent-neon transition-colors">vs. Windows</a>
+        <a href="#generator" class="hover:text-accent-neon transition-colors">Installer</a>
+        <a href="#migration" class="hover:text-accent-neon transition-colors">Switch Guide</a>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-3">
+        <a href="https://github.com/introvert024/ANTILINUX" target="_blank" rel="noopener noreferrer" 
+           class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 hover:border-white/25 hover:bg-white/10 text-white text-sm font-medium flex items-center gap-2 transition-all">
+          <i data-lucide="github" class="w-4 h-4"></i>
+          <span class="hidden sm:inline">Star on GitHub</span>
+        </a>
+        <a href="#generator" class="px-4 py-2 rounded-xl bg-gradient-to-r from-fedora to-accent-neon text-black font-bold text-sm shadow-lg shadow-accent-neon/20 hover:shadow-accent-neon/40 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2">
+          <i data-lucide="terminal" class="w-4 h-4"></i>
+          <span>Get ANTILINUX</span>
+        </a>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative pt-16 pb-24 lg:pt-24 lg:pb-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="text-center max-w-4xl mx-auto space-y-8">
+      
+      <!-- Pill Badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gnome-surface border border-accent-neon/30 text-accent-neon text-xs font-mono font-medium shadow-md">
+        <span class="w-2 h-2 rounded-full bg-accent-neon animate-ping"></span>
+        <span>THE POST-WINDOWS ERA HAS BEGUN</span>
+        <span class="text-slate-400">|</span>
+        <span class="text-slate-300">Fedora 41/42 Workstation + GNOME</span>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.1]">
+        Ditch Windows. <br/>
+        <span class="bg-gradient-to-r from-fedora-light via-accent-neon to-cyan-300 bg-clip-text text-transparent">
+          Build & Run in the Age of AI.
+        </span>
+      </h1>
+
+      <!-- Description -->
+      <p class="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto font-light leading-relaxed">
+        Windows is drowning in telemetry, background bloat, and forced surveillance. In an era where AI enables you to build custom micro-tools and apps in minutes, you need pure POSIX speed, bare-metal hardware access, and zero corporate lock-in.
+      </p>
+
+      <!-- Quick Command Bar -->
+      <div class="max-w-xl mx-auto pt-4">
+        <div class="p-2 sm:p-2.5 rounded-2xl bg-gnome-surface border border-white/10 shadow-2xl flex flex-col sm:flex-row items-center justify-between gap-3 font-mono text-sm">
+          <div class="flex items-center gap-3 px-3 py-1.5 w-full sm:w-auto text-slate-300 overflow-x-auto">
+            <span class="text-accent-neon font-bold">$</span>
+            <span class="select-all text-xs sm:text-sm whitespace-nowrap">curl -fsSL https://antilux.vercel.app/setup.sh | bash</span>
+          </div>
+          <button id="hero-copy-btn" onclick="copyHeroCommand()" class="w-full sm:w-auto px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 active:bg-accent-neon active:text-black text-white text-xs font-semibold flex items-center justify-center gap-2 transition-all">
+            <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+            <span id="hero-copy-text">Copy Script</span>
+          </button>
+        </div>
+        <p class="text-[12px] text-slate-500 font-mono mt-2 text-center">Transforms any standard Fedora 41+ installation into ANTILINUX</p>
+      </div>
+
+      <!-- Hero Badges -->
+      <div class="pt-6 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto text-left">
+        <div class="p-4 rounded-xl bg-gnome-surface/60 border border-white/5 backdrop-blur-sm">
+          <div class="text-2xl font-bold font-mono text-accent-neon">920 MB</div>
+          <div class="text-xs text-slate-400 mt-0.5">Idle RAM Usage (vs 4.8GB Windows)</div>
+        </div>
+        <div class="p-4 rounded-xl bg-gnome-surface/60 border border-white/5 backdrop-blur-sm">
+          <div class="text-2xl font-bold font-mono text-fedora-light">0% Spyware</div>
+          <div class="text-xs text-slate-400 mt-0.5">No Recall, Ads, or Telemetry</div>
+        </div>
+        <div class="p-4 rounded-xl bg-gnome-surface/60 border border-white/5 backdrop-blur-sm">
+          <div class="text-2xl font-bold font-mono text-accent-cyan">Native AI</div>
+          <div class="text-xs text-slate-400 mt-0.5">Ollama & GPU Stack Pre-Loaded</div>
+        </div>
+        <div class="p-4 rounded-xl bg-gnome-surface/60 border border-white/5 backdrop-blur-sm">
+          <div class="text-2xl font-bold font-mono text-accent-purple">Atomic GNOME</div>
+          <div class="text-xs text-slate-400 mt-0.5">Wayland, Pop Tiling & Glass UI</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Interactive Terminal Simulator -->
+  <section id="terminal" class="py-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+    <div class="text-center mb-8">
+      <h2 class="text-xs font-mono uppercase tracking-widest text-accent-neon mb-2">Interactive Shell Simulator</h2>
+      <p class="text-2xl sm:text-3xl font-extrabold text-white">Experience ANTILINUX Right Here in Your Browser</p>
+    </div>
+
+    <!-- Terminal Window Container -->
+    <div class="rounded-2xl overflow-hidden border border-white/15 bg-gnome-surface shadow-2xl backdrop-blur-xl">
+      
+      <!-- Terminal Header / Titlebar -->
+      <div class="px-4 py-3 bg-gnome-darker/90 border-b border-white/10 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <div class="w-3 h-3 rounded-full bg-accent-danger cursor-pointer"></div>
+          <div class="w-3 h-3 rounded-full bg-accent-warning cursor-pointer"></div>
+          <div class="w-3 h-3 rounded-full bg-accent-neon cursor-pointer"></div>
+          <span class="text-xs font-mono text-slate-400 ml-3">antilux@workstation: ~ (zsh + starship)</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-fedora/30 text-fedora-light border border-fedora/40">Fedora Linux 41 Workstation</span>
+        </div>
+      </div>
+
+      <!-- Terminal Quick Commands Toolbar -->
+      <div class="px-4 py-2 bg-white/[0.03] border-b border-white/5 flex flex-wrap items-center gap-2 text-xs font-mono">
+        <span class="text-slate-400">Click to execute:</span>
+        <button onclick="runCommand('fastfetch')" class="px-2.5 py-1 rounded bg-gnome-card hover:bg-accent-neon hover:text-black transition-colors border border-white/10 text-slate-300">fastfetch</button>
+        <button onclick="runCommand('antilux ai')" class="px-2.5 py-1 rounded bg-gnome-card hover:bg-accent-neon hover:text-black transition-colors border border-white/10 text-slate-300">antilux ai</button>
+        <button onclick="runCommand('bench-ram')" class="px-2.5 py-1 rounded bg-gnome-card hover:bg-accent-neon hover:text-black transition-colors border border-white/10 text-slate-300">bench-ram</button>
+        <button onclick="runCommand('cat manifesto.txt')" class="px-2.5 py-1 rounded bg-gnome-card hover:bg-accent-neon hover:text-black transition-colors border border-white/10 text-slate-300">cat manifesto.txt</button>
+        <button onclick="runCommand('build-my-app')" class="px-2.5 py-1 rounded bg-gnome-card hover:bg-accent-neon hover:text-black transition-colors border border-white/10 text-slate-300">build-my-app</button>
+        <button onclick="runCommand('clear')" class="px-2.5 py-1 rounded bg-white/5 hover:bg-red-500 hover:text-white transition-colors border border-white/10 text-slate-400 ml-auto">clear</button>
+      </div>
+
+      <!-- Terminal Output Screen -->
+      <div id="term-body" class="p-5 font-mono text-sm sm:text-base min-h-[360px] max-h-[500px] overflow-y-auto space-y-3 leading-relaxed">
+        <div class="text-slate-400 text-xs">
+          Welcome to ANTILINUX Terminal (Fedora 41 kernel 6.11-generic x86_64).<br>
+          Local AI daemon [Ollama] is running on GPU:0 (0.0ms cold start).<br>
+          Type a command or click any shortcut button above to test.
+        </div>
+      </div>
+
+      <!-- Terminal Input Line -->
+      <div class="px-5 py-3 bg-gnome-darker/70 border-t border-white/10 flex items-center gap-3 font-mono text-sm sm:text-base">
+        <span class="text-accent-neon font-bold flex items-center gap-1.5">
+          <span>antilux</span>
+          <span class="text-fedora-light">❯</span>
+        </span>
+        <input id="term-input" type="text" placeholder="Type a command (try 'fastfetch' or 'help')..." 
+               class="w-full bg-transparent border-none outline-none text-white font-mono placeholder:text-slate-600 focus:ring-0">
+        <button onclick="handleInputSubmit()" class="px-3 py-1 rounded bg-accent-neon/20 hover:bg-accent-neon text-accent-neon hover:text-black text-xs font-bold transition-all">
+          RUN
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- The AI Era Philosophy Section -->
+  <section id="philosophy" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/5">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      
+      <div class="space-y-6">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-fedora/20 text-fedora-light border border-fedora/30 font-mono text-xs">
+          THE SHIFT IN COMPUTING
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white leading-tight">
+          Why Windows Makes No Sense in the Age of AI
+        </h2>
+        <div class="space-y-4 text-slate-300 font-light leading-relaxed">
+          <p>
+            For decades, Windows locked users into proprietary ecosystems: closed binaries (.exe), registry hives, subscription-locked utility software, and bloated background services.
+          </p>
+          <p>
+            <strong class="text-white font-semibold">Today, code is the executable.</strong> With coding LLMs and AI autonomous agents, you don't need to search shady freeware sites or buy closed software for basic workflows. If you need a PDF tool, an image optimizer, a data processor, or a custom desktop companion, you write or prompt it into existence in seconds.
+          </p>
+          <p>
+            Linux is the natural, unencumbered home for this new paradigm. It gives you raw POSIX APIs, direct GPU tensor cores without WSL2 hypervisor overhead, lightweight container runtimes, and total sovereignty over your hardware.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+          <div class="p-4 rounded-xl bg-gnome-surface border border-white/5">
+            <div class="flex items-center gap-2 text-accent-danger font-semibold text-sm">
+              <i data-lucide="x-circle" class="w-4 h-4"></i> The Old Way (Windows)
+            </div>
+            <p class="text-xs text-slate-400 mt-2">Closed apps, \$15/mo subscriptions, ads inside Start Menu, forced Recall taking screenshots of your work.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-gnome-surface border border-accent-neon/20">
+            <div class="flex items-center gap-2 text-accent-neon font-semibold text-sm">
+              <i data-lucide="check-circle" class="w-4 h-4"></i> The ANTILINUX Way
+            </div>
+            <p class="text-xs text-slate-400 mt-2">Generate micro-apps on demand with local Ollama/Claude, run natively in 1ms, zero fees, 100% private.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Visual Card: The Modern AI Workflow on Linux -->
+      <div class="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-gnome-surface to-gnome-card border border-white/10 shadow-2xl space-y-6 relative overflow-hidden">
+        <div class="absolute -top-12 -right-12 w-48 h-48 bg-fedora/20 rounded-full blur-3xl pointer-events-none"></div>
+        
+        <div class="flex items-center justify-between border-b border-white/10 pb-4">
+          <div class="flex items-center gap-3">
+            <div class="w-3 h-3 rounded-full bg-accent-neon animate-pulse"></div>
+            <span class="font-mono text-sm font-semibold text-white">ANTILINUX AI Stack in Action</span>
+          </div>
+          <span class="text-xs font-mono text-slate-400">Fedora 41 Wayland</span>
+        </div>
+
+        <!-- AI Demo Snippet -->
+        <div class="space-y-3 font-mono text-xs">
+          <div class="p-3 rounded-xl bg-gnome-darker/80 border border-white/5 text-slate-300">
+            <span class="text-slate-500"># 1. Prompt your local offline model to build what you need</span><br>
+            <span class="text-accent-neon">$</span> antilux ai prompt "Create a zero-latency audio recorder & local whisper transcriber CLI"
+          </div>
+          <div class="p-3 rounded-xl bg-fedora-dark/40 border border-fedora/30 text-fedora-light">
+            <span class="text-accent-cyan">✓</span> Generated: transcribing-agent.py (32 lines)<br>
+            <span class="text-accent-cyan">✓</span> Auto-linked: libpulse & whisper.cpp native binding<br>
+            <span class="text-accent-cyan">✓</span> Execution Time: 0.04s (Zero WSL2 memory penalty)
+          </div>
+          <div class="p-3 rounded-xl bg-gnome-darker/80 border border-white/5 text-slate-300">
+            <span class="text-slate-500"># 2. Add to your GNOME app launcher instantly</span><br>
+            <span class="text-accent-neon">$</span> antilux desktop-integrate --app transcribing-agent
+          </div>
+        </div>
+
+        <div class="pt-2 text-xs text-slate-400 flex items-center justify-between border-t border-white/10">
+          <span>Native Python 3.12 + PyTorch + Ollama</span>
+          <span class="text-accent-neon font-mono font-bold">100% Offline & Free</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- OS Comparison Matrix: Windows 11 vs ANTILINUX -->
+  <section id="comparison" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/5">
+    <div class="text-center max-w-3xl mx-auto mb-14 space-y-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-accent-danger/20 text-accent-danger border border-accent-danger/30 font-mono text-xs">
+        THE HARD TRUTH
+      </div>
+      <h2 class="text-3xl sm:text-5xl font-extrabold text-white">Windows 11 vs. ANTILINUX</h2>
+      <p class="text-slate-400 font-light">Look at what Windows consumes before you even open a single application.</p>
+    </div>
+
+    <!-- Comparison Table -->
+    <div class="overflow-x-auto">
+      <table class="w-full text-left border-collapse border border-white/10 rounded-2xl overflow-hidden bg-gnome-surface">
+        <thead>
+          <tr class="bg-gnome-darker/90 border-b border-white/10 text-xs font-mono uppercase tracking-wider text-slate-400">
+            <th class="p-5">Feature / Metric</th>
+            <th class="p-5 text-accent-danger bg-accent-danger/5 border-l border-white/10">Windows 11 (Out of Box)</th>
+            <th class="p-5 text-accent-neon bg-accent-neon/5 border-l border-white/10">ANTILINUX (Fedora + Curated GNOME)</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-white/5 text-sm">
+          <tr class="hover:bg-white/[0.02]">
+            <td class="p-5 font-semibold text-white">Clean Boot RAM Idle</td>
+            <td class="p-5 text-slate-400 bg-accent-danger/5 border-l border-white/10">
+              <span class="text-accent-danger font-mono font-bold">4.2 GB - 5.5 GB</span> (Services, Widgets, Edge background tasks)
+            </td>
+            <td class="p-5 text-white bg-accent-neon/5 border-l border-white/10">
+              <span class="text-accent-neon font-mono font-bold">~920 MB</span> (Pristine Wayland session, ultra-efficient)
+            </td>
+          </tr>
+          <tr class="hover:bg-white/[0.02]">
+            <td class="p-5 font-semibold text-white">Telemetry & Surveillance</td>
+            <td class="p-5 text-slate-400 bg-accent-danger/5 border-l border-white/10">
+              <span class="text-accent-danger">38+ telemetry trackers</span>, Windows Recall screenshotting your screen, Advertising ID
+            </td>
+            <td class="p-5 text-white bg-accent-neon/5 border-l border-white/10">
+              <span class="text-accent-neon">0 Trackers</span>. Fully open source, verifiable RPM/OSTree packages
+            </td>
+          </tr>
+          <tr class="hover:bg-white/[0.02]">
+            <td class="p-5 font-semibold text-white">Local AI Performance</td>
+            <td class="p-5 text-slate-400 bg-accent-danger/5 border-l border-white/10">
+              WSL2 virtualization layer with 15-25% memory overhead, file I/O latency penalty on NTFS
+            </td>
+            <td class="p-5 text-white bg-accent-neon/5 border-l border-white/10">
+              <span class="text-accent-neon">Direct Bare-Metal</span> CUDA / ROCm / Vulkan access, native Btrfs/Ext4 I/O
+            </td>
+          </tr>
+          <tr class="hover:bg-white/[0.02]">
+            <td class="p-5 font-semibold text-white">Desktop Environment</td>
+            <td class="p-5 text-slate-400 bg-accent-danger/5 border-l border-white/10">
+              Inconsistent Windows 8/10/11 UI fragments, ads in Start Menu, locked taskbar
+            </td>
+            <td class="p-5 text-white bg-accent-neon/5 border-l border-white/10">
+              <span class="text-accent-neon">Curated GNOME</span> with Pop Tiling, Starship, Blur-my-shell, buttery smooth 3-finger gestures
+            </td>
+          </tr>
+          <tr class="hover:bg-white/[0.02]">
+            <td class="p-5 font-semibold text-white">Software Freedom</td>
+            <td class="p-5 text-slate-400 bg-accent-danger/5 border-l border-white/10">
+              Proprietary locks, license activation keys, forced Microsoft Account logins
+            </td>
+            <td class="p-5 text-white bg-accent-neon/5 border-l border-white/10">
+              <span class="text-accent-neon">100% Free & Open Source</span>. No account required, infinite customizability
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Curated GNOME & Built-in Apps Showcase -->
+  <section id="features" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/5">
+    <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-fedora/20 text-fedora-light border border-fedora/30 font-mono text-xs">
+        THE ANTILINUX EXPERIENCE
+      </div>
+      <h2 class="text-3xl sm:text-5xl font-extrabold text-white">Engineered for Focus & Power</h2>
+      <p class="text-slate-400 font-light">
+        A custom Fedora base configured with the ideal developer GNOME desktop, tuned kernel parameters, and the ultimate AI toolkit.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      
+      <!-- Feature Card 1 -->
+      <div class="p-6 rounded-2xl bg-gnome-surface border border-white/10 hover:border-accent-neon/40 transition-all group space-y-4">
+        <div class="w-12 h-12 rounded-xl bg-fedora/20 flex items-center justify-center text-fedora-light group-hover:scale-110 transition-transform">
+          <i data-lucide="layout-grid" class="w-6 h-6"></i>
+        </div>
+        <h3 class="text-xl font-bold text-white">Auto-Tiling GNOME</h3>
+        <p class="text-sm text-slate-400 leading-relaxed">
+          Pre-integrated with Pop Shell / Forge tiling extension. Enjoy i3/Sway style dynamic automatic window snapping while retaining GNOME's world-class Wayland touch gestures.
+        </p>
+      </div>
+
+      <!-- Feature Card 2 -->
+      <div class="p-6 rounded-2xl bg-gnome-surface border border-white/10 hover:border-accent-neon/40 transition-all group space-y-4">
+        <div class="w-12 h-12 rounded-xl bg-accent-neon/20 flex items-center justify-center text-accent-neon group-hover:scale-110 transition-transform">
+          <i data-lucide="cpu" class="w-6 h-6"></i>
+        </div>
+        <h3 class="text-xl font-bold text-white">Out-of-the-Box Local AI</h3>
+        <p class="text-sm text-slate-400 leading-relaxed">
+          Ollama and Hugging Face run as persistent background systemd services. Pull and run DeepSeek Coder, Llama 3, or Qwen instantly with zero setup hassle.
+        </p>
+      </div>
+
+      <!-- Feature Card 3 -->
+      <div class="p-6 rounded-2xl bg-gnome-surface border border-white/10 hover:border-accent-neon/40 transition-all group space-y-4">
+        <div class="w-12 h-12 rounded-xl bg-accent-purple/20 flex items-center justify-center text-accent-purple group-hover:scale-110 transition-transform">
+          <i data-lucide="terminal" class="w-6 h-6"></i>
+        </div>
+        <h3 class="text-xl font-bold text-white">Starship & Modern Shell</h3>
+        <p class="text-sm text-slate-400 leading-relaxed">
+          Zsh + Starship prompt with git branch context, Python venv indicators, Node versions, and execution times displayed elegantly in your terminal.
+        </p>
+      </div>
+
+      <!-- Feature Card 4 -->
+      <div class="p-6 rounded-2xl bg-gnome-surface border border-white/10 hover:border-accent-neon/40 transition-all group space-y-4">
+        <div class="w-12 h-12 rounded-xl bg-accent-cyan/20 flex items-center justify-center text-accent-cyan group-hover:scale-110 transition-transform">
+          <i data-lucide="boxes" class="w-6 h-6"></i>
+        </div>
+        <h3 class="text-xl font-bold text-white">Podman & Containers</h3>
+        <p class="text-sm text-slate-400 leading-relaxed">
+          Rootless container engine pre-configured. Spin up PostgreSQL, Redis, vector databases (Chroma, Qdrant), or entire microservices without root privileges or Docker Desktop fees.
+        </p>
+      </div>
+
+      <!-- Feature Card 5 -->
+      <div class="p-6 rounded-2xl bg-gnome-surface border border-white/10 hover:border-accent-neon/40 transition-all group space-y-4">
+        <div class="w-12 h-12 rounded-xl bg-fedora-light/20 flex items-center justify-center text-fedora-light group-hover:scale-110 transition-transform">
+          <i data-lucide="gamepad-2" class="w-6 h-6"></i>
+        </div>
+        <h3 class="text-xl font-bold text-white">Gaming Ready (Proton)</h3>
+        <p class="text-sm text-slate-400 leading-relaxed">
+          RPM Fusion and Flatpak Steam enabled. Play 95%+ of your Windows games at equal or higher FPS thanks to Valve's Proton and Vulkan driver optimizations.
+        </p>
+      </div>
+
+      <!-- Feature Card 6 -->
+      <div class="p-6 rounded-2xl bg-gnome-surface border border-white/10 hover:border-accent-neon/40 transition-all group space-y-4">
+        <div class="w-12 h-12 rounded-xl bg-accent-warning/20 flex items-center justify-center text-accent-warning group-hover:scale-110 transition-transform">
+          <i data-lucide="zap" class="w-6 h-6"></i>
+        </div>
+        <h3 class="text-xl font-bold text-white">Atomic ZRAM & DNF Speed</h3>
+        <p class="text-sm text-slate-400 leading-relaxed">
+          DNF parallel downloads unlocked (10x faster package updates) and compressed ZRAM swap enabled for seamless multitasking even under heavy multi-billion-parameter LLM loads.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Interactive Custom Script Generator -->
+  <section id="generator" class="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto border-t border-white/5">
+    <div class="text-center max-w-3xl mx-auto mb-12 space-y-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-accent-neon/20 text-accent-neon border border-accent-neon/30 font-mono text-xs">
+        TAILORED INSTALLATION
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Generate Your Custom ANTILINUX Script</h2>
+      <p class="text-slate-400 font-light">
+        Choose your components and get a custom setup command tailored for your hardware and developer stack.
+      </p>
+    </div>
+
+    <!-- Generator Box -->
+    <div class="p-6 sm:p-8 rounded-3xl bg-gnome-surface border border-white/10 shadow-2xl space-y-8">
+      
+      <!-- Checkbox Options -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        
+        <label class="flex items-start gap-3 p-3.5 rounded-xl bg-gnome-card/60 border border-white/5 cursor-pointer hover:border-white/20 transition-all">
+          <input type="checkbox" id="opt-gnome" checked onchange="updateGeneratedCommand()" class="mt-1 rounded text-accent-neon focus:ring-0">
+          <div>
+            <div class="text-sm font-semibold text-white">Curated GNOME Theme</div>
+            <div class="text-xs text-slate-400">Dark glass, Pop tiling, Dash-to-dock</div>
+          </div>
+        </label>
+
+        <label class="flex items-start gap-3 p-3.5 rounded-xl bg-gnome-card/60 border border-white/5 cursor-pointer hover:border-white/20 transition-all">
+          <input type="checkbox" id="opt-ollama" checked onchange="updateGeneratedCommand()" class="mt-1 rounded text-accent-neon focus:ring-0">
+          <div>
+            <div class="text-sm font-semibold text-white">Local AI Runtime (Ollama)</div>
+            <div class="text-xs text-slate-400">Pre-download Llama 3 & DeepSeek Coder</div>
+          </div>
+        </label>
+
+        <label class="flex items-start gap-3 p-3.5 rounded-xl bg-gnome-card/60 border border-white/5 cursor-pointer hover:border-white/20 transition-all">
+          <input type="checkbox" id="opt-dev" checked onchange="updateGeneratedCommand()" class="mt-1 rounded text-accent-neon focus:ring-0">
+          <div>
+            <div class="text-sm font-semibold text-white">Full Dev Toolchain</div>
+            <div class="text-xs text-slate-400">Git, Python 3, Node LTS, Rust, Podman</div>
+          </div>
+        </label>
+
+        <label class="flex items-start gap-3 p-3.5 rounded-xl bg-gnome-card/60 border border-white/5 cursor-pointer hover:border-white/20 transition-all">
+          <input type="checkbox" id="opt-gaming" checked onchange="updateGeneratedCommand()" class="mt-1 rounded text-accent-neon focus:ring-0">
+          <div>
+            <div class="text-sm font-semibold text-white">Proton Gaming Pack</div>
+            <div class="text-xs text-slate-400">Steam, Vulkan drivers, Wine-GE</div>
+          </div>
+        </label>
+
+        <label class="flex items-start gap-3 p-3.5 rounded-xl bg-gnome-card/60 border border-white/5 cursor-pointer hover:border-white/20 transition-all">
+          <input type="checkbox" id="opt-office" checked onchange="updateGeneratedCommand()" class="mt-1 rounded text-accent-neon focus:ring-0">
+          <div>
+            <div class="text-sm font-semibold text-white">Productivity Apps</div>
+            <div class="text-xs text-slate-400">VS Code OSS, Obsidian, OnlyOffice</div>
+          </div>
+        </label>
+
+        <label class="flex items-start gap-3 p-3.5 rounded-xl bg-gnome-card/60 border border-white/5 cursor-pointer hover:border-white/20 transition-all">
+          <input type="checkbox" id="opt-speed" checked onchange="updateGeneratedCommand()" class="mt-1 rounded text-accent-neon focus:ring-0">
+          <div>
+            <div class="text-sm font-semibold text-white">DNF 10x Turbo Mirrors</div>
+            <div class="text-xs text-slate-400">Fastest mirror & parallel downloads</div>
+          </div>
+        </label>
+
+      </div>
+
+      <!-- Generated Command Output Box -->
+      <div class="space-y-3">
+        <div class="flex items-center justify-between text-xs font-mono text-slate-400">
+          <span>RUN THIS ON FEDORA TERMINAL:</span>
+          <span id="gen-tag" class="text-accent-neon">Complete Profile Selected</span>
+        </div>
+        <div class="p-4 rounded-2xl bg-gnome-darker border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="font-mono text-xs sm:text-sm text-slate-200 overflow-x-auto w-full select-all">
+            <span class="text-accent-neon font-bold">$ </span>
+            <span id="gen-command-text">curl -fsSL https://antilux.vercel.app/setup.sh | bash</span>
+          </div>
+          <button onclick="copyGeneratedCommand()" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-accent-neon text-black font-mono font-bold text-xs hover:bg-white transition-all flex items-center justify-center gap-2 shrink-0">
+            <i data-lucide="copy" class="w-4 h-4"></i>
+            <span id="gen-copy-btn-text">Copy Command</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Step-by-Step Windows Migration Guide -->
+  <section id="migration" class="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto border-t border-white/5">
+    <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-fedora/20 text-fedora-light border border-fedora/30 font-mono text-xs">
+        DITCH WINDOWS PLAYBOOK
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-white">How to Switch in 4 Easy Steps</h2>
+      <p class="text-slate-400 font-light">
+        You can dual-boot alongside Windows or replace it entirely for maximum performance.
+      </p>
+    </div>
+
+    <div class="space-y-4">
+      
+      <!-- Step 1 -->
+      <div class="p-6 rounded-2xl bg-gnome-surface border border-white/5 space-y-2">
+        <div class="flex items-center gap-3">
+          <span class="w-7 h-7 rounded-lg bg-fedora/30 text-fedora-light font-mono font-bold text-sm flex items-center justify-center">1</span>
+          <h3 class="text-lg font-bold text-white">Download Fedora 41 Workstation ISO</h3>
+        </div>
+        <p class="text-sm text-slate-400 pl-10">
+          Head to <a href="https://fedoraproject.org/workstation/download" target="_blank" class="text-accent-neon hover:underline">fedoraproject.org</a> and grab the official Fedora Workstation ISO (standard x86_64).
+        </p>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="p-6 rounded-2xl bg-gnome-surface border border-white/5 space-y-2">
+        <div class="flex items-center gap-3">
+          <span class="w-7 h-7 rounded-lg bg-fedora/30 text-fedora-light font-mono font-bold text-sm flex items-center justify-center">2</span>
+          <h3 class="text-lg font-bold text-white">Flash to USB with Rufus or Ventoy</h3>
+        </div>
+        <p class="text-sm text-slate-400 pl-10">
+          Insert any 8GB+ USB stick, open Rufus or Ventoy on Windows, select the ISO, and click Start.
+        </p>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="p-6 rounded-2xl bg-gnome-surface border border-white/5 space-y-2">
+        <div class="flex items-center gap-3">
+          <span class="w-7 h-7 rounded-lg bg-fedora/30 text-fedora-light font-mono font-bold text-sm flex items-center justify-center">3</span>
+          <h3 class="text-lg font-bold text-white">Boot USB & Install Fedora Workstation</h3>
+        </div>
+        <p class="text-sm text-slate-400 pl-10">
+          Restart your PC, press F12 or Del for boot menu, select your USB, and follow the simple Anaconda installer (install side-by-side with Windows or wipe disk).
+        </p>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="p-6 rounded-2xl bg-gnome-surface border border-accent-neon/30 space-y-2">
+        <div class="flex items-center gap-3">
+          <span class="w-7 h-7 rounded-lg bg-accent-neon text-black font-mono font-bold text-sm flex items-center justify-center">4</span>
+          <h3 class="text-lg font-bold text-white">Run ANTILINUX Bootstrap Script</h3>
+        </div>
+        <p class="text-sm text-slate-400 pl-10">
+          Open the terminal and run:
+          <code class="block mt-2 p-3 bg-gnome-darker rounded-xl text-accent-neon font-mono text-xs">
+            curl -fsSL https://antilux.vercel.app/setup.sh | bash
+          </code>
+          Sit back while your fresh install is transformed into the curated ANTILINUX environment with all AI tools and GNOME presets!
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10 bg-gnome-darker py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-fedora to-accent-neon p-[2px]">
+          <div class="w-full h-full bg-gnome-darker rounded-[6px] flex items-center justify-center font-mono font-bold text-xs text-accent-neon">
+            ⏻
+          </div>
+        </div>
+        <div>
+          <span class="font-bold text-white tracking-wide">ANTILINUX</span>
+          <span class="text-slate-400 text-xs ml-2">Fedora-based AI Workstation Edition</span>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-6 text-sm text-slate-400">
+        <a href="https://github.com/introvert024/ANTILINUX" target="_blank" class="hover:text-accent-neon transition-colors">GitHub Repository</a>
+        <a href="https://github.com/introvert024/ANTILINUX/blob/master/LICENSE" target="_blank" class="hover:text-accent-neon transition-colors">MIT License</a>
+        <a href="https://antilux.vercel.app/setup.sh" target="_blank" class="hover:text-accent-neon transition-colors">setup.sh script</a>
+      </div>
+
+      <div class="text-xs text-slate-500 font-mono">
+        Built with pride for the open-source & AI developer community.
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
