@@ -87,22 +87,30 @@ export default function Hero() {
         </div>
 
         {/* Stats Grid */}
-        <div className="pt-6 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto text-left">
-          <div className="p-4 rounded-xl bg-gnome-surface/60 border border-white/5 backdrop-blur-sm">
-            <div className="text-2xl font-bold font-mono text-accent-neon">920 MB</div>
-            <div className="text-xs text-slate-400 mt-0.5">Idle RAM Usage (vs 4.8GB on Win 11)</div>
+        <div className="pt-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 max-w-5xl mx-auto text-left">
+          <div className="p-3.5 rounded-xl bg-gnome-surface/60 border border-white/5 backdrop-blur-sm">
+            <div className="text-xl font-bold font-mono text-accent-neon">920 MB</div>
+            <div className="text-[11px] text-slate-400 mt-0.5">Idle RAM (vs 4.8GB Win 11)</div>
           </div>
-          <div className="p-4 rounded-xl bg-gnome-surface/60 border border-white/5 backdrop-blur-sm">
-            <div className="text-2xl font-bold font-mono text-fedora-light">0% Spyware</div>
-            <div className="text-xs text-slate-400 mt-0.5">No Recall, Ads, or Telemetry</div>
+          <div className="p-3.5 rounded-xl bg-gnome-surface/60 border border-white/5 backdrop-blur-sm">
+            <div className="text-xl font-bold font-mono text-fedora-light">0% Spyware</div>
+            <div className="text-[11px] text-slate-400 mt-0.5">Zero Telemetry & No Recall</div>
           </div>
-          <div className="p-4 rounded-xl bg-gnome-surface/60 border border-white/5 backdrop-blur-sm">
-            <div className="text-2xl font-bold font-mono text-accent-cyan">Native AI</div>
-            <div className="text-xs text-slate-400 mt-0.5">Ollama & CUDA/ROCm Stack Ready</div>
+          <div className="p-3.5 rounded-xl bg-gnome-surface/60 border border-white/5 backdrop-blur-sm">
+            <div className="text-xl font-bold font-mono text-accent-cyan">Flow Launcher</div>
+            <div className="text-[11px] text-slate-400 mt-0.5">Natively Bound to [Alt+Space]</div>
           </div>
-          <div className="p-4 rounded-xl bg-gnome-surface/60 border border-white/5 backdrop-blur-sm">
-            <div className="text-2xl font-bold font-mono text-accent-purple">Atomic GNOME</div>
-            <div className="text-xs text-slate-400 mt-0.5">Pop Dynamic Auto-Tiling & Glass UI</div>
+          <div className="p-3.5 rounded-xl bg-gnome-surface/60 border border-white/5 backdrop-blur-sm">
+            <div className="text-xl font-bold font-mono text-accent-purple">WSA Subsystem</div>
+            <div className="text-[11px] text-slate-400 mt-0.5">Native Android via KVM VirtIO</div>
+          </div>
+          <div className="p-3.5 rounded-xl bg-gnome-surface/60 border border-white/5 backdrop-blur-sm">
+            <div className="text-xl font-bold font-mono text-accent-warning">Local AI Ready</div>
+            <div className="text-[11px] text-slate-400 mt-0.5">Ollama & Bare-Metal CUDA</div>
+          </div>
+          <div className="p-3.5 rounded-xl bg-gnome-surface/60 border border-white/5 backdrop-blur-sm">
+            <div className="text-xl font-bold font-mono text-emerald-400">Pop Auto-Tile</div>
+            <div className="text-[11px] text-slate-400 mt-0.5">Dynamic Window Snapping</div>
           </div>
         </div>
 

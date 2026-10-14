@@ -58,6 +58,24 @@ export default function ComparisonTable() {
               </td>
             </tr>
             <tr className="hover:bg-white/[0.02]">
+              <td className="p-5 font-semibold text-white">Launcher & Search</td>
+              <td className="p-5 text-slate-400 bg-accent-danger/5 border-l border-white/10">
+                Slow Windows Search, forced Bing ads, high disk indexing, no plugin system
+              </td>
+              <td className="p-5 text-white bg-accent-neon/5 border-l border-white/10">
+                <span className="text-accent-neon font-bold">Flow Launcher [Alt + Space]</span>: Instant spotlight search, calculator, AI prompt runner, file finder
+              </td>
+            </tr>
+            <tr className="hover:bg-white/[0.02]">
+              <td className="p-5 font-semibold text-white">Android Subsystem (WSA)</td>
+              <td className="p-5 text-slate-400 bg-accent-danger/5 border-l border-white/10">
+                <span className="text-accent-danger font-semibold">Deprecated & Killed</span> by Microsoft in March 2025
+              </td>
+              <td className="p-5 text-white bg-accent-neon/5 border-l border-white/10">
+                <span className="text-accent-neon font-bold">WSA for Linux (Out-of-box)</span>: Powered by KVM, VirtIO 3D GPU acceleration, Aurora Store & APK sideloading
+              </td>
+            </tr>
+            <tr className="hover:bg-white/[0.02]">
               <td className="p-5 font-semibold text-white">Gaming Support</td>
               <td className="p-5 text-slate-400 bg-accent-danger/5 border-l border-white/10">
                 DirectX with heavy background shader caches and anticheat kernel rootkits

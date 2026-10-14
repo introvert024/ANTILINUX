@@ -160,6 +160,54 @@ export default function InteractiveTerminal() {
         );
         break;
 
+      case "flow-launcher":
+      case "flow":
+        result = (
+          <div className="text-xs space-y-2 p-3 bg-gnome-card/80 border border-accent-cyan/30 rounded-xl">
+            <div className="flex items-center justify-between text-accent-cyan font-bold">
+              <span>⚡ Flow Launcher (Linux Native .NET 8 + Avalonia UI)</span>
+              <span className="px-2 py-0.5 rounded bg-accent-cyan/20 text-[10px] text-accent-cyan font-mono border border-accent-cyan/40">Shortcut: [Alt + Space]</span>
+            </div>
+            <div className="text-slate-300">Triggered with zero latency. Active plugins:</div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] font-mono text-slate-400">
+              <div className="p-2 rounded bg-gnome-darker/70 border border-white/5">
+                <span className="text-accent-neon font-bold">&gt; App Launcher:</span> Instant index of 1,840+ apps
+              </div>
+              <div className="p-2 rounded bg-gnome-darker/70 border border-white/5">
+                <span className="text-fedora-light font-bold">&gt; Math / Calculator:</span> Evaluate expressions live
+              </div>
+              <div className="p-2 rounded bg-gnome-darker/70 border border-white/5">
+                <span className="text-accent-purple font-bold">&gt; AI Prompt Runner:</span> Query local Ollama from searchbar
+              </div>
+              <div className="p-2 rounded bg-gnome-darker/70 border border-white/5">
+                <span className="text-accent-warning font-bold">&gt; GitHub Quick-Jump:</span> Open repo branches in 1 tap
+              </div>
+            </div>
+            <div className="text-[11px] text-slate-500 font-mono">Project repo: github.com/introvert024/Flowlauncherlinux</div>
+          </div>
+        );
+        break;
+
+      case "wsa":
+      case "wsa-linux":
+        result = (
+          <div className="text-xs space-y-2 p-3 bg-gnome-card/80 border border-accent-purple/30 rounded-xl">
+            <div className="flex items-center justify-between text-accent-purple font-bold">
+              <span>🤖 Windows Subsystem for Android (WSA Linux)</span>
+              <span className="px-2 py-0.5 rounded bg-accent-purple/20 text-[10px] text-accent-purple font-mono border border-accent-purple/40">Status: Running</span>
+            </div>
+            <div className="text-slate-300 font-mono space-y-1 text-xs">
+              <div><span className="text-fedora-light font-bold">Backend:</span> KVM Virtualization + VirtIO 3D GPU Passthrough</div>
+              <div><span className="text-fedora-light font-bold">Display:</span> Wayland native window client (GNOME integrated)</div>
+              <div><span className="text-fedora-light font-bold">Android Version:</span> Android 13 Tiramisu</div>
+              <div><span className="text-fedora-light font-bold">App Store:</span> Aurora Store / F-Droid / APK Direct Sideloading</div>
+              <div className="text-accent-neon font-bold pt-1">✓ Microsoft killed WSA on Windows, but it runs faster and open-source on ANTILINUX!</div>
+            </div>
+            <div className="text-[11px] text-slate-500 font-mono">Project repo: github.com/introvert024/wsa-linux</div>
+          </div>
+        );
+        break;
+
       case "build-my-app":
         result = (
           <div className="text-xs space-y-2">
@@ -215,7 +263,7 @@ export default function InteractiveTerminal() {
         {/* Command Shortcuts */}
         <div className="px-4 py-2 bg-white/[0.03] border-b border-white/5 flex flex-wrap items-center gap-2 text-xs font-mono">
           <span className="text-slate-400">Click to execute:</span>
-          {["fastfetch", "antilux ai", "bench-ram", "cat manifesto.txt", "build-my-app"].map((c) => (
+          {["fastfetch", "flow", "wsa", "antilux ai", "bench-ram", "cat manifesto.txt", "build-my-app"].map((c) => (
             <button
               key={c}
               onClick={() => executeCommand(c)}

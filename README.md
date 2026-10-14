@@ -68,7 +68,10 @@ chmod +x setup.sh
 
 ## 🖥️ What's Inside ANTILINUX?
 
-### 1. Curated GNOME Experience
+### 1. Curated GNOME Experience & Flow Launcher
+- **Flow Launcher for Linux ([Flowlauncherlinux](https://github.com/introvert024/Flowlauncherlinux))**:
+  - Native Linux port (.NET 8 + Avalonia UI) by `introvert024`.
+  - Bound natively to **`Alt + Space`** for zero-latency spotlight search, file indexing, calculator, and AI prompts.
 - Pre-configured GNOME extensions:
   - **Forge / Pop Shell**: Dynamic window auto-tiling
   - **Dash to Dock**: Customizable macOS/Ubuntu-style dock
@@ -76,16 +79,23 @@ chmod +x setup.sh
   - **AppIndicator & KStatusNotifierItem**: System tray support
   - **Just Perfection**: Minimalist UI toggles
 - Bespoke Dark Cyberpunk & Minimalist Themes
-- Custom high-productivity keyboard shortcuts (`Super + Enter` for terminal, `Super + Space` for runner)
+- Custom high-productivity keyboard shortcuts (`Alt + Space` for Flow Launcher, `Super + Enter` for terminal)
 
-### 2. Pre-configured AI & Developer Suite
+### 2. Windows Subsystem for Android (WSA) Out of the Box
+- **WSA for Linux ([wsa-linux](https://github.com/introvert024/wsa-linux))**:
+  - Full Android subsystem ported to Linux by `introvert024`.
+  - Microsoft killed WSA on Windows 11 in March 2025, but ANTILINUX provides it **natively pre-installed**!
+  - Powered by KVM virtualization + VirtIO 3D GPU acceleration.
+  - Native Wayland app windowing, Aurora Store, F-Droid, and direct APK sideloading.
+
+### 3. Pre-configured AI & Developer Suite
 - **Local LLMs & AI Runtime**: Ollama pre-installed with systemd service, ready for `llama3`, `deepseek-coder`, `mistral`, and `qwen`.
 - **Containers**: Podman & Docker CE with Rootless container support.
 - **Coding Runtimes**: Python 3.12+, Node.js LTS, Bun, Rust (`cargo`), Go.
 - **Editors & Terminals**: Ghostty & Alacritty terminals with zsh + Starship prompt, VS Code (OSS) / Zed.
 - **AI Agent Tooling**: Model Context Protocol (MCP) server scaffolds and CLI agent wrappers.
 
-### 3. Windows Migrator Toolkit
+### 4. Windows Migrator Toolkit
 - Migration checklist and file transfer scripts
 - Proton / Wine-GE pre-configured for seamless Steam gaming (higher FPS than Windows!)
 - LibreOffice + OnlyOffice + WebApp wrappers for seamless productivity

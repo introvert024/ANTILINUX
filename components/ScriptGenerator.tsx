@@ -5,6 +5,8 @@ import { Copy, Check, Terminal, Sparkles } from "lucide-react";
 
 export default function ScriptGenerator() {
   const [opts, setOpts] = useState({
+    flow: true,
+    wsa: true,
     gnome: true,
     ollama: true,
     dev: true,
@@ -21,6 +23,8 @@ export default function ScriptGenerator() {
 
   const generateCommand = () => {
     const flags: string[] = [];
+    if (!opts.flow) flags.push("--no-flow");
+    if (!opts.wsa) flags.push("--no-wsa");
     if (!opts.gnome) flags.push("--no-gnome");
     if (!opts.ollama) flags.push("--no-ai");
     if (!opts.dev) flags.push("--minimal-dev");
@@ -61,6 +65,32 @@ export default function ScriptGenerator() {
         {/* Checkbox Options Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           
+          <label className="flex items-start gap-3 p-3.5 rounded-xl bg-gnome-card/60 border border-white/5 cursor-pointer hover:border-white/20 transition-all select-none">
+            <input
+              type="checkbox"
+              checked={opts.flow}
+              onChange={() => toggle("flow")}
+              className="mt-1 rounded text-accent-neon focus:ring-0"
+            />
+            <div>
+              <div className="text-sm font-semibold text-white">Flow Launcher (Alt + Space)</div>
+              <div className="text-xs text-slate-400">Native Linux .NET 8 port by introvert024</div>
+            </div>
+          </label>
+
+          <label className="flex items-start gap-3 p-3.5 rounded-xl bg-gnome-card/60 border border-white/5 cursor-pointer hover:border-white/20 transition-all select-none">
+            <input
+              type="checkbox"
+              checked={opts.wsa}
+              onChange={() => toggle("wsa")}
+              className="mt-1 rounded text-accent-neon focus:ring-0"
+            />
+            <div>
+              <div className="text-sm font-semibold text-white">WSA Android Subsystem</div>
+              <div className="text-xs text-slate-400">wsa-linux with KVM VirtIO 3D acceleration</div>
+            </div>
+          </label>
+
           <label className="flex items-start gap-3 p-3.5 rounded-xl bg-gnome-card/60 border border-white/5 cursor-pointer hover:border-white/20 transition-all select-none">
             <input
               type="checkbox"

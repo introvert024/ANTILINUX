@@ -5,6 +5,18 @@ import { LayoutGrid, Cpu, Terminal, Boxes, Gamepad2, Zap } from "lucide-react";
 export default function FeaturesGrid() {
   const features = [
     {
+      icon: Terminal,
+      color: "text-accent-cyan bg-accent-cyan/20",
+      title: "Flow Launcher [Alt + Space]",
+      desc: "Native Linux port of Flow Launcher (.NET 8 + Avalonia UI) by introvert024. Press Alt+Space for spotlight app search, calculator, AI prompts, and GitHub jump.",
+    },
+    {
+      icon: Boxes,
+      color: "text-accent-purple bg-accent-purple/20",
+      title: "WSA Subsystem for Android",
+      desc: "Windows Subsystem for Android (wsa-linux) pre-installed out of the box! Run mobile Android apps natively with KVM VirtIO 3D GPU acceleration and Aurora Store.",
+    },
+    {
       icon: LayoutGrid,
       color: "text-fedora-light bg-fedora/20",
       title: "Auto-Tiling GNOME",
@@ -15,18 +27,6 @@ export default function FeaturesGrid() {
       color: "text-accent-neon bg-accent-neon/20",
       title: "Out-of-Box Local AI",
       desc: "Ollama runs as a background systemd daemon. Pull and run DeepSeek Coder, Llama 3, or Qwen with direct GPU pass-through in seconds.",
-    },
-    {
-      icon: Terminal,
-      color: "text-accent-purple bg-accent-purple/20",
-      title: "Starship Prompt & Shell",
-      desc: "Zsh and Starship shell pre-configured with Git status, Python virtualenvs, Node badges, and runtime duration right in your prompt.",
-    },
-    {
-      icon: Boxes,
-      color: "text-accent-cyan bg-accent-cyan/20",
-      title: "Podman & Containers",
-      desc: "Rootless container engine pre-configured. Spin up PostgreSQL, Redis, Qdrant vector DBs, or microservices without root or Docker Desktop fees.",
     },
     {
       icon: Gamepad2,
