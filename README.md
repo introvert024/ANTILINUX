@@ -3,6 +3,7 @@
 > **Ditch Windows. Embrace the Age of AI.**
 > Build your own applications on demand, break free from telemetry and bloatware, and unleash raw bare-metal performance on a Fedora-powered, pre-tuned GNOME experience.
 
+[![Release v1.0.0](https://img.shields.io/badge/Release-v1.0.0-00E599?style=for-the-badge&logo=github&logoColor=white)](https://github.com/introvert024/ANTILINUX/releases/tag/v1.0.0)
 [![ANTILINUX Website](https://img.shields.io/badge/Website-ANTILINUX-00E599?style=for-the-badge&logo=vercel&logoColor=white)](https://antilux.vercel.app)
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/introvert024/ANTILINUX&project-name=ANTILINUX)
 [![Base: Fedora 41/42](https://img.shields.io/badge/Base-Fedora_Linux-51A2DA?style=for-the-badge&logo=fedora&logoColor=white)](https://getfedora.org)
@@ -27,12 +28,31 @@ And where do AI models, developer tools, and agents run best? **Natively on Linu
 
 ---
 
-## 🚀 Quick Install / Bootstrap
+## 📦 Official Release Downloads & Install
 
-If you are already on Fedora 41 or 42 (Workstation or Silverblue), you can transform your installation into **ANTILINUX** with a single command:
+You can install ANTILINUX using either the online one-liner or by downloading the official release bundle:
+
+### Option 1: Standalone Release Bundle (Offline / Portable)
+Download the latest verified release assets from [GitHub Releases v1.0.0](https://github.com/introvert024/ANTILINUX/releases/tag/v1.0.0):
+
+- **[antilux-v1.0.0-fedora-installer.tar.gz](https://github.com/introvert024/ANTILINUX/releases/download/v1.0.0/antilux-v1.0.0-fedora-installer.tar.gz)** *(Linux native tarball)*
+- **[antilux-v1.0.0-fedora-installer.zip](https://github.com/introvert024/ANTILINUX/releases/download/v1.0.0/antilux-v1.0.0-fedora-installer.zip)** *(Universal zip archive)*
+- **[setup.sh](https://github.com/introvert024/ANTILINUX/releases/download/v1.0.0/setup.sh)** *(Standalone bootstrap script)*
+- **[SHA256SUMS.txt](https://github.com/introvert024/ANTILINUX/releases/download/v1.0.0/SHA256SUMS.txt)** *(Cryptographic checksums)*
+
+```bash
+# Extract and run
+tar -xzvf antilux-v1.0.0-fedora-installer.tar.gz
+chmod +x setup.sh
+./setup.sh
+```
+
+### Option 2: Quick Online Bootstrap
+Run directly on Fedora 41 or 42 (Workstation or Silverblue):
 
 ```bash
 curl -fsSL https://antilux.vercel.app/setup.sh | bash
+```
 ```
 
 Or clone this repository and run locally:
