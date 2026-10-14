@@ -1,0 +1,33 @@
+# ANTILINUX Starship Prompt Configuration
+format = """
+[┌─](bold #51a2da)$directory$git_branch$git_status$python$nodejs$rust$package
+[└─❯](bold #00e599) """
+
+[directory]
+style = "bold #51a2da"
+truncation_length = 3
+truncate_to_repo = true
+
+[git_branch]
+style = "bold #a855f7"
+format = "[$symbol$branch]($style) "
+symbol = " "
+
+[git_status]
+style = "bold #f43f5e"
+format = "[$all_status$ahead_behind]($style) "
+
+[python]
+style = "bold #06b6d4"
+symbol = " "
+format = "[$symbol($version )(\\($virtualenv\\) )]($style)"
+
+[nodejs]
+style = "bold #10b981"
+symbol = "󰎙 "
+format = "[$symbol($version )]($style)"
+
+[rust]
+style = "bold #f59e0b"
+symbol = "󱘗 "
+format = "[$symbol($version )]($style)"

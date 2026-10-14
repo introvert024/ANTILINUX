@@ -90,10 +90,20 @@ gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
 gsettings set org.gnome.desktop.interface enable-hot-corners false
 gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close'
 
+# Apply dconf presets if available
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
+if [ -f "$SCRIPT_DIR/gnome-presets.ini" ]; then
+    dconf load / < "$SCRIPT_DIR/gnome-presets.ini" 2>/dev/null || true
+fi
+
 # Install Modern Starship prompt
 if ! command -v starship &> /dev/null; then
     echo -e "${GREEN}Installing Starship cross-shell prompt...${NC}"
     curl -sS https://starship.rs/install.sh | sh -s -- -y
+    mkdir -p "$HOME/.config"
+    if [ -f "$SCRIPT_DIR/starship.toml" ]; then
+        cp "$SCRIPT_DIR/starship.toml" "$HOME/.config/starship.toml"
+    fi
     echo 'eval "$(starship init bash)"' >> "$HOME/.bashrc"
     if [ -f "$HOME/.zshrc" ]; then
         echo 'eval "$(starship init zsh)"' >> "$HOME/.zshrc"

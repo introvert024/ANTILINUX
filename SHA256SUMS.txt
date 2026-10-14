@@ -1,0 +1,3 @@
+﻿339ed34b79b9ddc311551b510cb0cf6b1a1ebfea5cb63a3ffab4b410b299b115  antilux-v1.0.0-fedora-installer.tar.gz
+cb7eca391590ccebc153e91291d11b41a2c4bae924e287e6435eeee688de6478  antilux-v1.0.0-fedora-installer.zip
+d83ba1c5053fe4138bd4e63151776e6f28374dfafcfebff51fb7b0d85743c291  setup.sh

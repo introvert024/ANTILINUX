@@ -25,3 +25,8 @@ dist-ssr
 
 # Vercel
 .vercel
+
+release_bundle
+*.tar.gz
+*.zip
+
